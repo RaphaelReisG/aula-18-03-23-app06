@@ -1,29 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Image} from 'react-native';
 
 
-class App extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      numero1: '',
-      numero2: '',
-      resultado: ''
-    };
-    
-    this.calcular = this.calcular.bind(this);
-  }
+export default function App(){
+  const [resultado, setResultado] = useState('')
 
 
-  calcular(){
+  function calcular(){
 
     res = Math.floor(Math.random() * 10)
-    this.setState({resultado: res});
+    setResultado((res))
 
   }
 
 
-  render(){
     return(
       <View style={styles.area}>
 
@@ -38,13 +28,13 @@ class App extends Component{
       <Text style={styles.titulo}>Pense em um número de 0 a 10</Text>
 
 
-      <Button title="?? Descobrir ??" onPress={this.calcular} />
+      <Button title="?? Descobrir ??" onPress={calcular} />
 
 
-      <Text style={styles.texto2}> {this.state.resultado} </Text>
+      <Text style={styles.texto2}> {resultado} </Text>
       </View>
     );
-  }
+  
 }
 
 
@@ -89,5 +79,3 @@ const styles = StyleSheet.create({
 
 })
 
-
-export default App;
